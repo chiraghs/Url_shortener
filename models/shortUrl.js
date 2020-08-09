@@ -11,6 +11,21 @@ const shortUrlSchema = new mongoose.Schema({
     required: true,
     default: shortId.generate
   },
+  board: {
+    type: String,
+    required: true,
+    default: 'Telangana'
+  },
+  school: {
+    type: String,
+    required: true,
+    default:'A'
+  },
+  lesson: {
+    type: String,
+    required: true,
+    default:'English'
+  },
   clicks: {
     type: Number,
     required: true,
