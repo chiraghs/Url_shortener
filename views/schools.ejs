@@ -18,12 +18,65 @@
       </li>
     </ul>
 <style>
+
+    /* Reset Select */
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  outline: 0;
+  box-shadow: none;
+  border: 0 !important;
+  background: #2c3e50;
+  background-image: none;
+}
+/* Remove IE arrow */
+select::-ms-expand {
+  display: none;
+}
+/* Custom Select */
+.select {
+  position: relative;
+  display: flex;
+  width: 20em;
+  height: 3em;
+  line-height: 3;
+  background: #2c3e50;
+  overflow: hidden;
+  border-radius: .25em;
+}
+select {
+  flex: 1;
+  padding: 0 .5em;
+  color: #fff;
+  cursor: pointer;
+}
+/* Arrow */
+.select::after {
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 1em;
+  background: #34495e;
+  cursor: pointer;
+  pointer-events: none;
+  -webkit-transition: .25s all ease;
+  -o-transition: .25s all ease;
+  transition: .25s all ease;
+}
+/* Transition */
+.select:hover::after {
+  color: #3a3a3a;
+}
+
 ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333;
+  background-color: #2c3e50;
 }
 
 li {
@@ -72,6 +125,28 @@ li.dropdown {
 }
 </style>
 
+<div class="row" style="margin-top: 20px;margin-bottom: 20px;">
+    <div class="select col-4 offset-1">
+        <select name="slct" id="slct">
+          <option selected disabled>Board</option>
+          <option value="1">CBSE</option>
+          <option value="2">Karnataka</option>
+          <option value="3">Telangana</option>
+          <option value="3">Maharasthra</option>
+          <option value="3">Tamil Nadu</option>
+        </select>
+    </div>
+    <div class="select col-4 offset-1">
+        <select name="slct" id="slct">
+          <option selected disabled>School</option>
+          <option value="1">A</option>
+          <option value="2">B</option>
+          <option value="3">C</option>
+          <option value="3">D</option>
+          <option value="3">E</option>
+        </select>
+    </div>
+</div>
 
 
 <script>
@@ -80,7 +155,7 @@ li.dropdown {
 	theme: "light2", // "light1", "light2", "dark1", "dark2"
 	animationEnabled: true,
 	title:{
-		text: "Share Value - 2016"   
+		text: "Clicks Value - 2020"
 	},
 	axisX: {
 		interval: 1,
@@ -88,28 +163,28 @@ li.dropdown {
 		valueFormatString: "MMM"
 	},
 	axisY:{
-		title: "Price (in USD)",
+		title: "clicks",
 		includeZero: true,
-		valueFormatString: "$#0"
+		valueFormatString: ""
 	},
-	data: [{        
+	data: [{
 		type: "line",
 		markerSize: 12,
 		xValueFormatString: "MMM, YYYY",
 		yValueFormatString: "$###.#",
-		dataPoints: [        
-			{ x: new Date(2016, 00, 1), y: 61, indexLabel: "gain", markerType: "triangle",  markerColor: "#6B8E23" },
-			{ x: new Date(2016, 01, 1), y: 71, indexLabel: "gain", markerType: "triangle",  markerColor: "#6B8E23" },
-			{ x: new Date(2016, 02, 1) , y: 55, indexLabel: "loss", markerType: "cross", markerColor: "tomato" },
-			{ x: new Date(2016, 03, 1) , y: 50, indexLabel: "loss", markerType: "cross", markerColor: "tomato" },
-			{ x: new Date(2016, 04, 1) , y: 65, indexLabel: "gain", markerType: "triangle", markerColor: "#6B8E23" },
-			{ x: new Date(2016, 05, 1) , y: 85, indexLabel: "gain", markerType: "triangle", markerColor: "#6B8E23" },
-			{ x: new Date(2016, 06, 1) , y: 68, indexLabel: "loss", markerType: "cross", markerColor: "tomato" },
-			{ x: new Date(2016, 07, 1) , y: 28, indexLabel: "loss", markerType: "cross", markerColor: "tomato" },
-			{ x: new Date(2016, 08, 1) , y: 34, indexLabel: "gain", markerType: "triangle", markerColor: "#6B8E23" },
-			{ x: new Date(2016, 09, 1) , y: 24, indexLabel: "loss", markerType: "cross", markerColor: "tomato" },
-			{ x: new Date(2016, 10, 1) , y: 44, indexLabel: "gain", markerType: "triangle", markerColor: "#6B8E23" },
-			{ x: new Date(2016, 11, 1) , y: 34, indexLabel: "loss", markerType: "cross", markerColor: "tomato" }
+		dataPoints: [
+			{ x: new Date(2016, 00, 1), y: 61, indexLabel: "", markerType: "triangle",  markerColor: "#6B8E23" },
+			{ x: new Date(2016, 01, 1), y: 71, indexLabel: "", markerType: "triangle",  markerColor: "#6B8E23" },
+			{ x: new Date(2016, 02, 1) , y: 55, indexLabel: "", markerType: "triangle", markerColor: "#6B8E23" },
+			{ x: new Date(2016, 03, 1) , y: 50, indexLabel: "", markerType: "triangle", markerColor: "#6B8E23" },
+			{ x: new Date(2016, 04, 1) , y: 65, indexLabel: "", markerType: "triangle", markerColor: "#6B8E23" },
+			{ x: new Date(2016, 05, 1) , y: 85, indexLabel: "", markerType: "triangle", markerColor: "#6B8E23" },
+			{ x: new Date(2016, 06, 1) , y: 68, indexLabel: "", markerType: "triangle", markerColor: "#6B8E23" },
+			{ x: new Date(2016, 07, 1) , y: 20, indexLabel: "", markerType: "triangle", markerColor: "#6B8E23" },
+			{ x: new Date(2016, 08, 1) , y: 0, indexLabel: "", markerType: "triangle", markerColor: "#6B8E23" },
+			{ x: new Date(2016, 09, 1) , y: 0, indexLabel: "", markerType: "triangle", markerColor: "#6B8E23" },
+			{ x: new Date(2016, 10, 1) , y: 0, indexLabel: "", markerType: "triangle", markerColor: "#6B8E23" },
+			{ x: new Date(2016, 11, 1) , y: 0, indexLabel: "", markerType: "triangle", markerColor: "#6B8E23" }
 		]
 	}]
 });
