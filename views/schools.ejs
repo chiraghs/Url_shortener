@@ -152,11 +152,35 @@ li.dropdown {
 
 <script>
   window.onload = function() {
+    var chart2 = new CanvasJS.Chart("chartContainer2", {
+	animationEnabled: true,
+	theme: "light2", // "light1", "light2", "dark1", "dark2"
+	title:{
+		text: "Clicks/Board"
+	},
+	axisY: {
+		title: "Clicks"
+	},
+	data: [{
+		type: "column",
+		showInLegend: true,
+		legendMarkerColor: "grey",
+		legendText: "Board Name",
+		dataPoints: [
+			{ y: 120, label: "Cbse" },
+			{ y: 100,  label: "Karnataka" },
+			{ y: 62,  label: "TamilNadu" },
+			{ y: 75,  label: "Telangana" },
+			{ y: 50,  label: "Maharasthra" }
+		]
+	}]
+});
+chart2.render();
     var chart = new CanvasJS.Chart("chartContainer", {
 	theme: "light2", // "light1", "light2", "dark1", "dark2"
 	animationEnabled: true,
 	title:{
-		text: "Clicks Value - 2020"
+		text: "Clicks/School"
 	},
 	axisX: {
 		interval: 1,
@@ -196,18 +220,24 @@ chart.render();
 </head>
 <body>
     <div class="row offset-2">
-        <h3 id="selectedBoard" class="col-4 offset-2"></h3>
-        <h3 id="selectedSchool" class="col-4"></h3></div>
-<div id="chartContainer" style="height: 300px; width: 100%;display: none;"></div>
+        <h3 id="selectedBoard" class="col-4"></h3>
+        <h3 id="selectedSchool" class="col-4 offset-2"></h3></div>
+        <div class="row" style="margin-top: 20px;">
+            <div id="chartContainer2" class="col-6" style="height: 300px; width: 100%;display: none;"></div>
+            <div id="chartContainer" class="col-6" style="height: 300px; width: 100%;display: none;"></div>
+        </div>
+
 
 
 <script>  function searchSchools() {
     var x = document.getElementById("slctBoard").value;
     var y = document.getElementById("slctSchool").value;
-    document.getElementById("selectedBoard").innerHTML = x;
-    document.getElementById("selectedSchool").innerHTML = y;
+    document.getElementById("selectedBoard").innerHTML = 'Board :  ' + x;
+    document.getElementById("selectedSchool").innerHTML = 'School :  ' + y;
     var s = document.getElementById("chartContainer");
     s.style.display = "block";
+    var b = document.getElementById("chartContainer2");
+    b.style.display = "block";
   }</script>
   <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 </body>
